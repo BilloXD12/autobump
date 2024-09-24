@@ -7,6 +7,16 @@ const client = new Client()
 client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`)
 
+    // Set streaming status
+    client.user.setPresence({
+        activities: [{
+            name: 'BilloXD', // Custom stream title
+            type: 'STREAMING',
+            url: 'https://twitch.tv/billoxd' // Replace with your stream URL
+        }],
+        status: 'online'
+    })
+
     const channel = await client.channels.fetch(process.env.BUMP_CHANNEL)
     
     async function bump() {
